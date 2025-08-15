@@ -1,5 +1,14 @@
-﻿// Cria uma instância da classe Random para gerar números aleatórios
-Random dice = new Random();
+﻿using System.Security.Cryptography;
+
+// Função para gerar um número aleatório entre min e max (inclusive)
+int RollDice(int min, int max)
+{
+    byte[] randomNumber = new byte[4];
+    RandomNumberGenerator.Fill(randomNumber);
+    int value = BitConverter.ToInt32(randomNumber, 0);
+    return Math.Abs(value % (max - min + 1)) + min;
+}
+
 // Exibe uma mensagem inicial para o usuário
 Console.ForegroundColor = ConsoleColor.Cyan;
 Console.WriteLine("🎲 Bem-vindo ao simulador de dado! 🎲");
@@ -9,7 +18,7 @@ string resposta;
 do
 {
     // Gera um número aleatório entre 1 e 6, simulando o lançamento de um dado
-    int roll = dice.Next(1, 7);
+    int roll = RollDice(1, 6);
 
     // Escolhe um emoticon para cada número
     string emoticon = roll switch
