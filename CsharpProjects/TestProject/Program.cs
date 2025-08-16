@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System;
+﻿int number = 7;
+string text = "seven";
 
-Random dice = new Random();
-int roll = dice.Next(1, 7);
-Console.WriteLine(dice.Next(1, 7));
-dice.Next(1, 7);
+Console.WriteLine(number);
+Console.WriteLine();
+Console.WriteLine(text);
