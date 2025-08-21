@@ -24,7 +24,7 @@ int[] ericScoresOverall = new int[] { 80, 90, 100, 80, 90, 100, 80, 90 };
 int[] gregorScoresOverall = new int[] { 91, 91, 91, 91, 91, 91, 91 };
 
 int extraCredit = 0;
-int pontsExtras = 0;
+decimal pontsExtras = 0;
 
 // Student names
 string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan", "Becky", "Chris", "Eric", "Gregor" };
@@ -33,7 +33,7 @@ int[] studentOverall = new int[10];
 string currentStudentLetterGrade = "";
 
 // Write the Report Header to the console
-Console.WriteLine("Student\t\tExame Score\tOverall\tGrade\tExtra\tCredit\n");
+Console.WriteLine("Student\t\tExame Score\tOverall\tGrade\tExtra Credit\n");
 
 foreach (string name in studentNames)
 {
@@ -116,7 +116,7 @@ foreach (string name in studentNames)
     currentStudentGradeOverall = (decimal)sumAssignmentOverall / overallAssignments;
 
     extraCredit = sumAssigmentScores / examAssignments;
-    //pontsExtras = (decimal)currentStudentGradeOverall - currentStudentGrade;
+    pontsExtras = currentStudentGradeOverall - currentStudentGrade;
     
     if (currentStudentGradeOverall >= 97)
         currentStudentLetterGrade = "A+";
@@ -145,7 +145,8 @@ foreach (string name in studentNames)
     else
         currentStudentLetterGrade = "F";
 
-    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t\t{currentStudentGradeOverall}\t{currentStudentLetterGrade}\t{extraCredit}\t{pontsExtras} (0 pts)");
+
+    Console.WriteLine($"{currentStudent}\t\t{currentStudentGrade}\t\t{currentStudentGradeOverall}\t{currentStudentLetterGrade}\t{extraCredit} ({pontsExtras} pts)");
 }
 
 Console.WriteLine("Press the Enter key to continue");
